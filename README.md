@@ -36,6 +36,7 @@ It's really easy to use the functions.
 
 ### Format Number
 ```php
+// (string) Format::number((float) $number, (int) $precision = 0, (string) $decimal = ',', (string) $thousand = '.')
 Format::number(1000); // output: '1.000'
 Format::number(123456.76,1); // output: '123.456,8'
 Format::number(123456.76,1,",","."); // output: '123,456.8'
@@ -43,6 +44,7 @@ Format::number(123456.76,1,",","."); // output: '123,456.8'
 
 ### Format Bytes
 ```php
+// (string) Format::bytes((float) $number, (int) $precision = 1)
 Format::bytes(100); // output: '100 B'
 Format::bytes(1000); // output: '1,0 kB'
 Format::bytes(2000000000,0); // output: '2 GB'
@@ -50,6 +52,7 @@ Format::bytes(2000000000,0); // output: '2 GB'
 
 ### Format to Bytes
 ```php
+// (int) Format::toBytes((string) $stringBytes)
 Format::toBytes('10k'); // output: 10240
 Format::toBytes('10 M'); // output: 10485760
 Format::toBytes('10G'); // output: 10737418240
@@ -57,6 +60,7 @@ Format::toBytes('10G'); // output: 10737418240
 
 ### Format Phone
 ```php
+// (string) Format::phone((string) $phone)
 Format::phone('085786920412'); // output: '+6285786920412'
 Format::phone('+6285786920412'); // output: +6285786920412
 Format::phone('(0274) 513-339'); // output: +62274513339
