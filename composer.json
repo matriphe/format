@@ -1,7 +1,7 @@
 {
     "name": "matriphe/format",
     "description": "Helpers contains common formatting, such as number, bytes, and phone.",
-    "keywords": ["helpers", "format", "number", "bytes"],
+    "keywords": ["helpers", "format", "number", "bytes", "phone", "laravel"],
     "type": "library",
     "license": "MIT",
     "authors": [
