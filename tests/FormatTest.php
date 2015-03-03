@@ -65,5 +65,27 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('+62271715877',$this->format->phone('(0271) 715 877'));
 		$this->assertSame('+65271715877',$this->format->phone('(0271) 715 877','+65'));
 	}
-	
+
+	public function testDateRange()
+	{
+		$this->assertSame('3 March 2015',$this->format->dateRange('2015-03-03'));
+		$this->assertSame('3 March 2015',$this->format->dateRange(null,'2015-03-03'));
+		$this->assertSame('3 Mar 15',$this->format->dateRange('2015-03-03','',false));
+		$this->assertSame('3 Mar 15',$this->format->dateRange(null,'2015-03-03',false));
+		$this->assertSame('3 March 2015',$this->format->dateRange('2015-03-03','2015-03-03'));
+		$this->assertSame('3 Mar 15',$this->format->dateRange('2015-03-03','2015-03-03',false));
+		$this->assertSame('3-5 March 2015',$this->format->dateRange('2015-03-03','2015-03-05'));
+		$this->assertSame('3-5 Mar 15',$this->format->dateRange('2015-03-03','2015-03-05',false));
+		$this->assertSame('3-5 March 2015',$this->format->dateRange('2015-03-05','2015-03-03'));
+		$this->assertSame('3-5 Mar 15',$this->format->dateRange('2015-03-05','2015-03-03',false));
+		$this->assertSame('3 March - 3 April 2015',$this->format->dateRange('2015-03-03','2015-04-03'));
+		$this->assertSame('3 Mar - 3 Apr 15',$this->format->dateRange('2015-03-03','2015-04-03',false));
+		$this->assertSame('3 March - 5 April 2015',$this->format->dateRange('2015-03-03','2015-04-05'));
+		$this->assertSame('3 Mar - 5 Apr 15',$this->format->dateRange('2015-03-03','2015-04-05',false));
+		$this->assertSame('3 March 2015 - 3 March 2016',$this->format->dateRange('2015-03-03','2016-03-03'));
+		$this->assertSame('3 Mar 15 - 3 Mar 16',$this->format->dateRange('2015-03-03','2016-03-03',false));
+		$this->assertSame('3 March 2015 - 3 April 2016',$this->format->dateRange('2015-03-03','2016-04-03'));
+		$this->assertSame('3 Mar 15 - 3 Apr 16',$this->format->dateRange('2015-03-03','2016-04-03',false));
+	}
+
 }

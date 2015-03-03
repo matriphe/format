@@ -61,8 +61,23 @@ Format::toBytes('10G'); // output: 10737418240
 ### Format Phone
 ```php
 // (string) Format::phone((string) $phone)
-Format::phone('085786920412'); // output: '+6285786920412'
+Format::phone('085786920412'); // output: +6285786920412
 Format::phone('+6285786920412'); // output: +6285786920412
 Format::phone('(0274) 513-339'); // output: +62274513339
 Format::phone('3-7801 2611','+60'); // output: +60378012611
+```
+
+### Format DateRange
+```php
+// (string) Format::dateRange((string) $date1, (string) $date2, (bool) $long)
+Format::dateRange('2015-03-03'); // output: 3 March 2015
+Format::dateRange('2015-03-03,null,false); // output: 3 Mar 15
+Format::dateRange('2015-03-03','2015-03-03'); // output: 3 March 2015
+Format::dateRange('2015-03-03','2015-03-03',false); // output: 3 Mar 15
+Format::dateRange('2015-03-03','2015-03-05'); // output: 3-5 March 2015
+Format::dateRange('2015-03-03','2015-03-05',false); // output: 3-5 Mar 15
+Format::dateRange('2015-03-03','2015-04-05'); // output: 3 March - 5 April 2015
+Format::dateRange('2015-03-03','2015-04-05',false); // output: 3 Mar - 5 Apr 15
+Format::dateRange('2015-03-03','2016-04-05'); // output: 3 March 2015 - 5 April 2016
+Format::dateRange('2015-03-03','2016-04-05',false); // output: 3 Mar 15 - 5 Apr 16
 ```
