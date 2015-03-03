@@ -71,7 +71,7 @@ Format::phone('3-7801 2611','+60'); // output: +60378012611
 ```php
 // (string) Format::dateRange((string) $date1, (string) $date2, (bool) $long)
 Format::dateRange('2015-03-03'); // output: 3 March 2015
-Format::dateRange('2015-03-03,null,false); // output: 3 Mar 15
+Format::dateRange('2015-03-03',null,false); // output: 3 Mar 15
 Format::dateRange('2015-03-03','2015-03-03'); // output: 3 March 2015
 Format::dateRange('2015-03-03','2015-03-03',false); // output: 3 Mar 15
 Format::dateRange('2015-03-03','2015-03-05'); // output: 3-5 March 2015
