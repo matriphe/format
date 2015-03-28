@@ -160,5 +160,28 @@ class Format {
 
 		return $result;
 	}
+	
+	public function slugHash($id, $timestamp = null)
+	{
+		$alphabet = '_zaq1OUJM2WSXcde34RFVbgt5CZAQ6YHNmju78IKlo90PLBGTED-';
+		
+		$base_count = strlen($alphabet);
+		
+		$encoded = '';
+		
+		$id = (!empty($timestamp) && is_int($timestamp) ? $timestamp : strtotime('now')).$id;
+		
+		while ($id >= $base_count) 
+		{
+			$div = $id/$base_count;
+			$mod = ($id-($base_count*intval($div)));
+			$encoded .= $alphabet[$mod];
+			$id = intval($div);
+		}
+		
+		if ($id) $encoded .= $alphabet[$id];
+		
+		return $encoded;
+	}
 
 }

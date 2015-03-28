@@ -87,5 +87,21 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('3 March 2015 - 3 April 2016',$this->format->dateRange('2015-03-03','2016-04-03'));
 		$this->assertSame('3 Mar 15 - 3 Apr 16',$this->format->dateRange('2015-03-03','2016-04-03',false));
 	}
+	
+	public function testHashSlug()
+	{
+		$this->assertSame('6O_IoS',$this->format->slugHash(1,strtotime('1984-03-22')));
+		$this->assertSame('YO_IoS',$this->format->slugHash(2,strtotime('1984-03-22')));
+		$this->assertSame('HO_IoS',$this->format->slugHash(3,strtotime('1984-03-22')));
+		$this->assertSame('4XBzGc',$this->format->slugHash(1,strtotime('1986-10-03')));
+		$this->assertSame('RXBzGc',$this->format->slugHash(2,strtotime('1986-10-03')));
+		$this->assertSame('FXBzGc',$this->format->slugHash(3,strtotime('1986-10-03')));
+		
+		for ($i=1;$i<4;$i++) {
+		$slug = $this->format->slugHash($i); echo $slug."\n";
+		$this->assertSame($slug,$this->format->slugHash($i));
+		}
+		
+	}
 
 }

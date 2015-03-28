@@ -6,7 +6,11 @@
 [![Latest Unstable Version](https://poser.pugx.org/matriphe/format/v/unstable.svg)](https://packagist.org/packages/matriphe/format) 
 [![License](https://poser.pugx.org/matriphe/format/license.svg)](https://packagist.org/packages/matriphe/format)
 
-Helpers contains common formatting, such as number, bytes, and phone. Very handy for formatting things in Laravel.
+Helpers contains common formatting, such as number, bytes, phone, and simple hash slug. Very handy for formatting things in Laravel.
+
+## Compatibility
+
+Works with Laravel 4 and Laravel 5.
 
 ## Installation
 
@@ -21,11 +25,24 @@ composer require matriphe/format
 
 ### Laravel Installation
 
+#### Laravel 4
+
 Open the `app/config/app.php` and add this line in `providers` section.
 ```php
 'Matriphe\Format\FormatServiceProvider'
 ```
 Still in `app/config/app.php`, add this line in `alias` section.
+```php
+'Format' => 'Matriphe\Format\Facades\FormatFacade'
+```
+
+#### Laravel 5
+
+Open the `config/app.php` and add this line in `providers` section.
+```php
+'Matriphe\Format\FormatServiceProvider'
+```
+Still in `config/app.php`, add this line in `alias` section.
 ```php
 'Format' => 'Matriphe\Format\Facades\FormatFacade'
 ```
@@ -80,4 +97,19 @@ Format::dateRange('2015-03-03','2015-04-05'); // output: 3 March - 5 April 2015
 Format::dateRange('2015-03-03','2015-04-05',false); // output: 3 Mar - 5 Apr 15
 Format::dateRange('2015-03-03','2016-04-05'); // output: 3 March 2015 - 5 April 2016
 Format::dateRange('2015-03-03','2016-04-05',false); // output: 3 Mar 15 - 5 Apr 16
+```
+
+### Format Hashed Slug
+
+It's very useful to generate *hashed* URL slug like in URL shortener service. It use UNIX timestamp salt to generate unique ID.
+```php
+Format::slugHash(1); // output: zqzbQ8
+Format::slugHash(2); // output: aqzbQ8
+Format::slugHash(3); // output: qqzbQ8
+Format::slugHash(1,strtotime('1984-03-22')); // output: 6O_IoS
+Format::slugHash(2,strtotime('1984-03-22')); // output: YO_IoS
+Format::slugHash(3,strtotime('1984-03-22')); // output: HO_IoS
+Format::slugHash(1,strtotime('1986-10-03')); // output: 4XBzGc
+Format::slugHash(2,strtotime('1986-10-03')); // output: RXBzGc
+Format::slugHash(3,strtotime('1986-10-03')); // output: FXBzGc
 ```
