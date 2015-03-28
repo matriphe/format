@@ -90,6 +90,7 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 	
 	public function testHashSlug()
 	{
+		date_default_timezone_set("Asia/Jakarta");
 		$this->assertSame('6O_IoS',$this->format->slugHash(1,strtotime('1984-03-22')));
 		$this->assertSame('YO_IoS',$this->format->slugHash(2,strtotime('1984-03-22')));
 		$this->assertSame('HO_IoS',$this->format->slugHash(3,strtotime('1984-03-22')));
