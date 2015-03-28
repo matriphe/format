@@ -113,3 +113,9 @@ Format::slugHash(1,strtotime('1986-10-03')); // output: 4XBzGc
 Format::slugHash(2,strtotime('1986-10-03')); // output: RXBzGc
 Format::slugHash(3,strtotime('1986-10-03')); // output: FXBzGc
 ```
+
+#### Note for *hashed* slug
+If you want to save this hashed slug into MySQL, make sure the column is case sensitive. To do this, alter the column with this command.
+```sql
+ALTER TABLE `table` CHANGE `column_slug` `column_slug` VARCHAR(50) BINARY NOT NULL;
+```
