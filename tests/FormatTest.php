@@ -98,5 +98,34 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('RXBzGc',$this->format->slugHash(2,strtotime('1986-10-03')));
 		$this->assertSame('FXBzGc',$this->format->slugHash(3,strtotime('1986-10-03')));
 	}
+	
+	public function testDuration()
+	{
+		$this->assertSame('1 day',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:22'));
+		$this->assertSame('2 days',$this->format->duration('2015-05-15 11:22:22', '2015-05-17 11:22:22'));
+		$this->assertSame('1 day 1 hour',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 12:22:22'));
+		$this->assertSame('1 day 2 hours',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 13:22:22'));
+		$this->assertSame('2 days 1 hour',$this->format->duration('2015-05-15 11:22:22', '2015-05-17 12:22:22'));
+		$this->assertSame('2 days 2 hours',$this->format->duration('2015-05-15 11:22:22', '2015-05-17 13:22:22'));
+		$this->assertSame('1 day 1 hour 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 12:23:22'));
+		$this->assertSame('1 day 1 hour 2 minutes',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 12:24:22'));
+		$this->assertSame('1 day 2 hours 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 13:23:22'));
+		$this->assertSame('1 day 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:23:22'));
+		$this->assertSame('1 day 2 minutes',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:24:22'));
+		$this->assertSame('2 days 2 minutes',$this->format->duration('2015-05-15 11:22:22', '2015-05-17 11:24:22'));
+		$this->assertSame('1 day 2 hours 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 13:23:25'));
+		$this->assertSame('1 day',$this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:25'));
+		$this->assertSame('1 second',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:23'));
+		$this->assertSame('5 seconds',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:27'));
+		$this->assertSame('1 hour',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 12:22:22'));
+		$this->assertSame('2 hours',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 13:22:22'));
+		$this->assertSame('1 hour 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 12:23:22'));
+		$this->assertSame('1 hour 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 12:23:26'));
+		$this->assertSame('2 hours 1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 13:23:59'));
+		$this->assertSame('1 minute',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:23:22'));
+		$this->assertSame('2 minutes',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:24:22'));
+		$this->assertSame('2 minutes',$this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:24:46'));
+		
+	}
 
 }

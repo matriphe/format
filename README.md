@@ -119,3 +119,33 @@ If you want to save this hashed slug into MySQL, make sure the column is case se
 ```sql
 ALTER TABLE `table` CHANGE `column_slug` `column_slug` VARCHAR(50) BINARY NOT NULL;
 ```
+
+### Format Duration
+
+It's very useful to generate duration in days, hours, minutes, and seconds.
+```php
+Format::duration('2015-05-15 11:22:22', '2015-05-16 11:22:22'); // output: 1 day
+Format::duration('2015-05-15 11:22:22', '2015-05-17 11:22:22'); // output: 2 days
+Format::duration('2015-05-15 11:22:22', '2015-05-16 12:22:22'); // output: 1 day 1 hour
+Format::duration('2015-05-15 11:22:22', '2015-05-16 13:22:22'); // output: 1 day 2 hours
+Format::duration('2015-05-15 11:22:22', '2015-05-17 12:22:22'); // output: 2 days 1 hour
+Format::duration('2015-05-15 11:22:22', '2015-05-17 13:22:22'); // output: 2 days 2 hours
+Format::duration('2015-05-15 11:22:22', '2015-05-16 12:23:22'); // output: 1 day 1 hour 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-16 12:24:22'); // output: 1 day 1 hour 2 minutes
+Format::duration('2015-05-15 11:22:22', '2015-05-16 13:23:22'); // output: 1 day 2 hours 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-16 11:23:22'); // output: 1 day 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-16 11:24:22'); // output: 1 day 2 minutes
+Format::duration('2015-05-15 11:22:22', '2015-05-17 11:24:22'); // output: 2 days 2 minutes
+Format::duration('2015-05-15 11:22:22', '2015-05-16 13:23:25'); // output: 1 day 2 hours 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-16 11:22:25'); // output: 1 day
+Format::duration('2015-05-15 11:22:22', '2015-05-15 11:22:23'); // output: 1 second
+Format::duration('2015-05-15 11:22:22', '2015-05-15 11:22:27'); // output: 5 seconds
+Format::duration('2015-05-15 11:22:22', '2015-05-15 12:22:22'); // output: 1 hour
+Format::duration('2015-05-15 11:22:22', '2015-05-15 13:22:22'); // output: 2 hours
+Format::duration('2015-05-15 11:22:22', '2015-05-15 12:23:22'); // output: 1 hour 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-15 12:23:26'); // output: 1 hour 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-15 13:23:59'); // output: 2 hours 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-15 11:23:22'); // output: 1 minute
+Format::duration('2015-05-15 11:22:22', '2015-05-15 11:24:22'); // output: 2 minutes
+Format::duration('2015-05-15 11:22:22', '2015-05-15 11:24:46'); // output: 2 minutes
+```
