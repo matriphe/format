@@ -152,7 +152,7 @@ class Format {
 		return $encoded;
 	}
 	
-	public function duration($date1, $date2)
+	public function duration($date1, $date2, $showsecond = false)
 	{
 		$result = '';
 		
@@ -181,8 +181,8 @@ class Format {
 			}
 			
 			$seconds = $diffs;
-			if ($seconds > 0 && $days == 0 && $hours == 0 && $minutes == 0) {
-    			$result .= ' '.$this->number($seconds).' '.($seconds == 1 ? 'second' : 'seconds').' ';
+			if ($seconds > 0 && (($days == 0 && $hours == 0 && $minutes == 0) || $showsecond == true)) {
+    			$result .= $this->number($seconds).' '.($seconds == 1 ? 'second' : 'seconds').' ';
 			}
 			
 			$result = trim($result);

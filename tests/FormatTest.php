@@ -125,6 +125,12 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('1 minute', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:23:22'));
 		$this->assertSame('2 minutes', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:24:22'));
 		$this->assertSame('2 minutes', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:24:46'));
+		$this->assertSame('2 minutes 24 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:24:46', true));
+		$this->assertSame('1 minute', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:23:22', true));
+		$this->assertSame('1 second', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:23', true));
+		$this->assertSame('5 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:27', true));
+		$this->assertSame('1 day 2 hours 1 minute 3 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 13:23:25', true));
+		$this->assertSame('1 day 3 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:25', true));	
 	}
     
     public function testRemoveNewLine()
