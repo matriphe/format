@@ -6,11 +6,11 @@
 [![Latest Unstable Version](https://poser.pugx.org/matriphe/format/v/unstable.svg)](https://packagist.org/packages/matriphe/format) 
 [![License](https://poser.pugx.org/matriphe/format/license.svg)](https://packagist.org/packages/matriphe/format)
 
-Helpers contains common formatting, such as number, bytes, phone, and simple hash slug. Very handy for formatting things in Laravel.
+Helpers contains common formatting, such as number, bytes, phone, simple hash slug, format duration, and remove new line in string. Very handy for formatting things in Laravel.
 
 ## Compatibility
 
-Works with Laravel 4 and Laravel 5.
+Works with Laravel 4.2, Laravel 5.0, and Laravel 5.1.
 
 ## Installation
 
@@ -25,26 +25,37 @@ composer require matriphe/format
 
 ### Laravel Installation
 
-#### Laravel 4
+#### Laravel 4.2
 
 Open the `app/config/app.php` and add this line in `providers` section.
 ```php
-'Matriphe\Format\FormatServiceProvider'
+'Matriphe\Format\FormatServiceProvider',
 ```
 Still in `app/config/app.php`, add this line in `alias` section.
 ```php
-'Format' => 'Matriphe\Format\Facades\FormatFacade'
+'Format' => 'Matriphe\Format\Facades\FormatFacade',
 ```
 
-#### Laravel 5
+#### Laravel 5.0
 
 Open the `config/app.php` and add this line in `providers` section.
 ```php
-'Matriphe\Format\FormatServiceProvider'
+'Matriphe\Format\FormatServiceProvider',
 ```
 Still in `config/app.php`, add this line in `alias` section.
 ```php
-'Format' => 'Matriphe\Format\Facades\FormatFacade'
+'Format' => 'Matriphe\Format\Facades\FormatFacade',
+```
+
+#### Laravel 5.1
+
+Open the `config/app.php` and add this line in `providers` section.
+```php
+Matriphe\Format\FormatServiceProvider::class,
+```
+Still in `config/app.php`, add this line in `alias` section.
+```php
+'Format' => Matriphe\Format\Facades\FormatFacade::class,
 ```
 
 ## Usage
@@ -148,4 +159,23 @@ Format::duration('2015-05-15 11:22:22', '2015-05-15 13:23:59'); // output: 2 hou
 Format::duration('2015-05-15 11:22:22', '2015-05-15 11:23:22'); // output: 1 minute
 Format::duration('2015-05-15 11:22:22', '2015-05-15 11:24:22'); // output: 2 minutes
 Format::duration('2015-05-15 11:22:22', '2015-05-15 11:24:46'); // output: 2 minutes
+```
+
+### Remove New Line in String
+
+Will remove `\n`, `\r`, and spaces in string to make it in one line.
+```php
+Format::removeNewLine("Hello 
+        World"); // output: Hello World
+Format::removeNewLine("Hello 
+        
+        
+        World
+        
+        
+        "); // output: Hello World
+Format::removeNewLine("Hello        World
+        
+        
+        "); // output: Hello World     
 ```

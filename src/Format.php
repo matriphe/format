@@ -190,5 +190,10 @@ class Format {
         
         return $result;
 	}
+	
+	public function removeNewLine($string)
+	{
+    	return trim(preg_replace('/\s+/', ' ', $string));
+	}
 
 }
