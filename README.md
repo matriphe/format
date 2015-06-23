@@ -16,7 +16,7 @@ Works with Laravel 4.2, Laravel 5.0, and Laravel 5.1.
 
 Open `composer.json` and require this line below.
 ```json
-"matriphe/format": "dev-master"
+"matriphe/format": "~1.0"
 ```
 Or you can run this command from your project directory.
 ```bash
