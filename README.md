@@ -9,13 +9,13 @@ Helpers contains common formatting, such as number, bytes, phone, simple hash sl
 
 ## Compatibility
 
-Works with Laravel 4.2, Laravel 5.0, and Laravel 5.1.
+Works with Laravel 5.1, Laravel 5.0, and Laravel 4.2.
 
 ## Installation
 
 Open `composer.json` and require this line below.
 ```json
-"matriphe/format": "~1.0"
+"matriphe/format": "~1.6"
 ```
 Or you can run this command from your project directory.
 ```bash
@@ -24,15 +24,15 @@ composer require matriphe/format
 
 ### Laravel Installation
 
-#### Laravel 4.2
+#### Laravel 5.1
 
-Open the `app/config/app.php` and add this line in `providers` section.
+Open the `config/app.php` and add this line in `providers` section.
 ```php
-'Matriphe\Format\FormatServiceProvider',
+Matriphe\Format\FormatServiceProvider::class,
 ```
-Still in `app/config/app.php`, add this line in `alias` section.
+Still in `config/app.php`, add this line in `alias` section.
 ```php
-'Format' => 'Matriphe\Format\Facades\FormatFacade',
+'Format' => Matriphe\Format\Facades\FormatFacade::class,
 ```
 
 #### Laravel 5.0
@@ -46,15 +46,15 @@ Still in `config/app.php`, add this line in `alias` section.
 'Format' => 'Matriphe\Format\Facades\FormatFacade',
 ```
 
-#### Laravel 5.1
+#### Laravel 4.2
 
-Open the `config/app.php` and add this line in `providers` section.
+Open the `app/config/app.php` and add this line in `providers` section.
 ```php
-Matriphe\Format\FormatServiceProvider::class,
+'Matriphe\Format\FormatServiceProvider',
 ```
-Still in `config/app.php`, add this line in `alias` section.
+Still in `app/config/app.php`, add this line in `alias` section.
 ```php
-'Format' => Matriphe\Format\Facades\FormatFacade::class,
+'Format' => 'Matriphe\Format\Facades\FormatFacade',
 ```
 
 ## Usage
@@ -70,6 +70,7 @@ Format::number(123456.76,1); // output: '123.456,8'
 Format::number(123456.76,1, ",", "."); // output: '123,456.8'
 
 // Using global function
+// (string) format_number((float) $number, (int) $precision = 0, (string) $decimal = ',', (string) $thousand = '.')
 format_number(1000); // output: '1.000'
 format_number(123456.76,1); // output: '123.456,8'
 format_number(123456.76,1, ",", "."); // output: '123,456.8'
@@ -85,6 +86,7 @@ Format::bytes(1000); // output: '1,0 kB'
 Format::bytes(2000000000,0); // output: '2 GB'
 
 // Using global function
+// (string) format_bytes((float) $number, (int) $precision = 1)
 format_bytes(100); // output: '100 B'
 format_bytes(1000); // output: '1,0 kB'
 format_bytes(2000000000,0); // output: '2 GB'
