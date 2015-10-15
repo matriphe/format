@@ -2,21 +2,21 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class FormatServiceProvider extends ServiceProvider {
+class FormatServiceProvider extends ServiceProvider
+{
 
-  protected $defer = false;
+    protected $defer = false;
 
-  public function boot()
-  {
-
-  }
-
-  public function register()
-  {
-    $this->app['format'] = $this->app->share(function($app)
+    public function boot()
     {
-      return new Format();
-    });
-  }
 
+    }
+
+    public function register()
+    {
+        $this->app['format'] = $this->app->share(function ($app) {
+    
+            return new Format();
+        });
+    }
 }

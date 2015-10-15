@@ -27,7 +27,7 @@ if (! function_exists('format_to_bytes')) {
 }
 
 if (! function_exists('format_phone')) {
-    function format_phone($phone, $countrycode='+62')
+    function format_phone($phone, $countrycode = '+62')
     {
         $format = new Format();
         return $format->phone($phone, $countrycode);
