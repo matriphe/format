@@ -87,7 +87,7 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('3 March 2015 - 3 April 2016', $this->format->dateRange('2015-03-03','2016-04-03'));
 		$this->assertSame('3 Mar 15 - 3 Apr 16', $this->format->dateRange('2015-03-03','2016-04-03',false));
 	}
-	
+
 	public function testHashSlug()
 	{
 		date_default_timezone_set("Asia/Jakarta");
@@ -98,7 +98,7 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('RXBzGc', $this->format->slugHash(2,strtotime('1986-10-03')));
 		$this->assertSame('FXBzGc', $this->format->slugHash(3,strtotime('1986-10-03')));
 	}
-	
+
 	public function testDuration()
 	{
 		$this->assertSame('1 day', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:22'));
@@ -130,23 +130,29 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('1 second', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:23', true));
 		$this->assertSame('5 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-15 11:22:27', true));
 		$this->assertSame('1 day 2 hours 1 minute 3 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 13:23:25', true));
-		$this->assertSame('1 day 3 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:25', true));	
+		$this->assertSame('1 day 3 seconds', $this->format->duration('2015-05-15 11:22:22', '2015-05-16 11:22:25', true));
 	}
-    
+
     public function testRemoveNewLine()
     {
-        $this->assertSame('Hello World', $this->format->removeNewLine("Hello 
+        $this->assertSame('Hello World', $this->format->removeNewLine("Hello
         World"));
-        $this->assertSame('Hello World', $this->format->removeNewLine("Hello 
-        
-        
+        $this->assertSame('Hello World', $this->format->removeNewLine("Hello
+
+
         World
-        
-        
+
+
         "));
         $this->assertSame('Hello World', $this->format->removeNewLine("Hello        World
-        
-        
+
+
         "));
+    }
+
+    public function testWpautop()
+    {
+    $this->assertSame('Hello World', $this->format->wpautop("Hello
+        World"));
     }
 }
