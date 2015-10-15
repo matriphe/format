@@ -149,10 +149,4 @@ class FormatTest extends PHPUnit_Framework_TestCase {
 
         "));
     }
-
-    public function testWpautop()
-    {
-    $this->assertSame('Hello World', $this->format->wpautop("Hello
-        World"));
-    }
 }
