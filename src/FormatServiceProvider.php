@@ -14,7 +14,7 @@ class FormatServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app['format'] = $this->app->share(function ($app) {
+        $this->app['format'] = $this->app->singleton(function ($app) {
     
             return new Format();
         });
