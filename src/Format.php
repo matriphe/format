@@ -2,7 +2,6 @@
 
 class Format
 {
-
     public function number($num, $sep = 0, $decimal = ',', $thousand = '.')
     {
         return number_format(floatval($num), $sep, $decimal, $thousand);
@@ -42,12 +41,16 @@ class Format
         switch (strtoupper($sSuffix)) {
             case 'P':
                 $iValue *= 1024;
+                // no break
             case 'T':
                 $iValue *= 1024;
+                // no break
             case 'G':
                 $iValue *= 1024;
+                // no break
             case 'M':
                 $iValue *= 1024;
+                // no break
             case 'K':
             case 'k':
                 $iValue *= 1024;

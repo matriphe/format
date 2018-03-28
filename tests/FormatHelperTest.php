@@ -4,7 +4,6 @@ require_once dirname(__FILE__) . '/../src/functions.php';
 
 class FormatHelperTest extends PHPUnit_Framework_TestCase
 {
-
     public function testFormatNumber()
     {
         $this->assertSame('100', format_number(100));
