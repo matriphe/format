@@ -4,7 +4,6 @@ use Matriphe\Format\Format;
 
 class FormatTest extends PHPUnit_Framework_TestCase
 {
-
     public function __construct()
     {
         $this->format = new Format();
