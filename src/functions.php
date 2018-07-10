@@ -1,67 +1,66 @@
 <?php
 
-use Matriphe\Format\Format;
+use Matriphe\Format\FormatFacade as Format;
 
 if (! function_exists('format_number')) {
-    function format_number($num, $sep = 0, $decimal = ',', $thousand = '.')
+    function format_number($value, $decimal = 0, $locale = null)
     {
-        $format = new Format();
-        return $format->number($num, $sep, $decimal, $thousand);
+        return app('matriphe.format')->number($value, $decimal, $locale);
     }
 }
 
 if (! function_exists('format_bytes')) {
-    function format_bytes($num, $precision = 1)
+    function format_bytes($bytes, $precision = 1)
     {
-        $format = new Format();
-        return $format->bytes($num, $precision);
+        return app('matriphe.format')->bytes($bytes, $precision);
     }
 }
 
 if (! function_exists('format_to_bytes')) {
-    function format_to_bytes($sSize)
+    function format_to_bytes($string)
     {
-        $format = new Format();
-        return $format->toBytes($sSize);
+        return app('matriphe.format')->toBytes($string);
     }
 }
 
 if (! function_exists('format_phone')) {
-    function format_phone($phone, $countrycode = '+62')
+    function format_phone($phone, $country = null)
     {
-        $format = new Format();
-        return $format->phone($phone, $countrycode);
+        return app('matriphe.format')->phone($phone, $country);
+    }
+}
+
+if (! function_exists('format_phone_human')) {
+    function format_phone_human($phone, $country = null)
+    {
+        return app('matriphe.format')->phoneHuman($phone, $country);
     }
 }
 
 if (! function_exists('format_date_range')) {
-    function format_date_range($date1, $date2 = null, $long = true)
+    function format_date_range($date1, $date2 = null, $long = true, $locale = null)
     {
-        $format = new Format();
-        return $format->dateRange($date1, $date2, $long);
-    }
-}
-
-if (! function_exists('format_slug_hash')) {
-    function format_slug_hash($id, $timestamp = null)
-    {
-        $format = new Format();
-        return $format->slugHash($id, $timestamp);
+        return app('matriphe.format')->dateRange($date1, $date2, $long, $locale);
     }
 }
 
 if (! function_exists('format_duration')) {
-    function format_duration($date1, $date2, $showsecond = false)
+    function format_duration($date1, $date2, $locale = null)
     {
-        $format = new Format();
-        return $format->duration($date1, $date2, $showsecond);
+        return app('matriphe.format')->duration($date1, $date2, $locale);
+    }
+}
+
+if (! function_exists('format_slug_hash')) {
+    function format_slug_hash(int $id, $timestamp = null, string $alphabet = null, int $length = 6)
+    {
+        return app('matriphe.format')->slugHash($id, $timestamp, $alphabet, $length);
     }
 }
 
 if (! function_exists('format_remove_new_line')) {
     function format_remove_new_line($string)
     {
-        $format = new Format();
-        return $format->removeNewLine($string);
+        return app('matriphe.format')->removeNewLine($string);
     }
 }

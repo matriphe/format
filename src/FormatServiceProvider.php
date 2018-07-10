@@ -1,4 +1,6 @@
-<?php namespace Matriphe\Format;
+<?php
+
+namespace Matriphe\Format;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +15,11 @@ class FormatServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('format', function ($app) {
-            return new Format();
+            return new Format(
+                $app['config']['app.locale'], $app['config']['app.timezone']
+            );
         });
+
+        $this->app->alias(Format::class, 'matriphe.format');
     }
 }

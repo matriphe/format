@@ -1,4 +1,6 @@
-<?php namespace Matriphe\Format\Facades;
+<?php
+
+namespace Matriphe\Format;
 
 use Illuminate\Support\Facades\Facade;
 
