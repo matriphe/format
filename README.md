@@ -5,7 +5,7 @@
 [![Total Downloads](https://poser.pugx.org/matriphe/format/downloads.svg)](https://packagist.org/packages/matriphe/format) 
 [![License](https://poser.pugx.org/matriphe/format/license.svg)](https://packagist.org/packages/matriphe/format)
 
-Helpers contains common formatting, such as number, bytes, phone, hash slug, format duration, and remove new line in string. Very handy for formatting things in Laravel.
+Helpers contains common formatting, such as number, bytes, currency, phone, hash slug, format duration, and remove new line in string. Very handy for formatting things in Laravel.
 
 Under the hood, it wraps some other great packages.
 
@@ -54,6 +54,22 @@ Format::number(123456.76, 1, 'en'); // output: '123,456.8'
 format_number(1000); // output: '1.000'
 format_number(123456.76, 1); // output: '123.456,8'
 format_number(123456.76, 1, 'en'); // output: '123,456.8'
+
+```
+
+### Format Currency
+```php
+// Using facade
+// string Format::number(float $number, int $precision = 0, string $locale = null)
+Format::currency(1000); // output: 'Rp1.000'
+Format::currency(123456.76); // output: 'Rp123.457'
+Format::currency(123456.76, 'us'); // output: 'US$123.456,76'
+
+// Using global function
+// string format_number(float $number, int $precision = 0, string $locale = null)
+format_currency(1000); // output: 'Rp1.000'
+format_currency(123456.76,); // output: 'Rp123.457'
+format_currency(123456.76, 'us'); // output: 'US$123.456,76'
 
 ```
 

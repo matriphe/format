@@ -18,8 +18,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        Locale::setDefault('id_ID');
-        date_default_timezone_set($this->tz);
+        $this->setAppLocale();
 
         $this->format = new Format($this->locale, $this->tz);
     }
@@ -27,5 +26,11 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($application)
     {
         return [FormatServiceProvider::class];
+    }
+
+    protected function setAppLocale()
+    {
+        Locale::setDefault('id_ID');
+        date_default_timezone_set($this->tz);
     }
 }

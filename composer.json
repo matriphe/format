@@ -1,7 +1,7 @@
 {
     "name": "matriphe/format",
     "description": "Helpers contains common formatting, such as number, bytes, and phone.",
-    "keywords": ["helpers", "format", "number", "bytes", "phone", "laravel"],
+    "keywords": ["helpers", "format", "number", "bytes", "phone", "currency", "laravel"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -17,7 +17,8 @@
         "gabrielelana/byte-units": "^0.5.0",
         "hashids/hashids": "^2.0",
         "propaganistas/laravel-intl": "^2.0",
-        "propaganistas/laravel-phone": "^4.0"
+        "propaganistas/laravel-phone": "^4.0",
+        "sokil/php-isocodes": "^2.1"
     },
     "require-dev": {
         "orchestra/testbench": "^3.5",

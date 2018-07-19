@@ -7,19 +7,25 @@ use DateTimeZone;
 use Jenssegers\Date\Date as IntlDate;
 use Locale;
 use Matriphe\Format\Concerns\Bytes;
+use Matriphe\Format\Concerns\Currency;
 use Matriphe\Format\Concerns\Date;
 use Matriphe\Format\Concerns\NewLine;
 use Matriphe\Format\Concerns\Number;
 use Matriphe\Format\Concerns\Phone;
 use Matriphe\Format\Concerns\SlugHash;
+use Matriphe\Format\Repositories\CurrencyRepository;
+use Propaganistas\LaravelIntl\Currency as IntlCurrency;
 use Propaganistas\LaravelIntl\Number as IntlNumber;
 
 class Format
 {
-    use Number, Phone, Bytes, Date, NewLine, SlugHash;
+    use Bytes, Currency, Date, NewLine, Number, Phone, SlugHash;
 
     protected $tz;
     protected $locale;
+
+    protected $currencyRepo;
+    protected $currency;
 
     protected $number;
 
@@ -46,9 +52,8 @@ class Format
         $this->locale = strtolower($locale);
         IntlDate::setLocale($this->locale);
 
-        $this->number = (new IntlNumber())
-            ->setLocale($this->locale)
-            ->setFallbackLocale($this->locale);
+        $this->setCurrencyLocale();
+        $this->setNumberLocale();
 
         return $this;
     }
@@ -99,6 +104,25 @@ class Format
         }
 
         return strtoupper($country);
+    }
+
+    protected function setCurrencyLocale()
+    {
+        $this->currencyRepo = (new CurrencyRepository($this->locale));
+        $this->currency = (new IntlCurrency())
+            ->setLocale($this->locale)
+            ->setFallbackLocale($this->locale);
+
+        return $this;
+    }
+
+    protected function setNumberLocale()
+    {
+        $this->number = (new IntlNumber())
+            ->setLocale($this->locale)
+            ->setFallbackLocale($this->locale);
+
+        return $this;
     }
 
     protected function getSystemTimezone()
