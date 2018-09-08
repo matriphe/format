@@ -44,6 +44,13 @@ if (! function_exists('format_phone_human')) {
     }
 }
 
+if (! function_exists('format_carrier')) {
+    function format_carrier($phone, $country = null)
+    {
+        return matripheFormat()->carrier($phone, $country);
+    }
+}
+
 if (! function_exists('format_date_range')) {
     function format_date_range($date1, $date2 = null, $long = true, $locale = null)
     {

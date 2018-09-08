@@ -141,6 +141,19 @@ format_phone_human('(65) 6655 4433', 'sg'); // output: 6655 4433
 format_phone_human('+6566554433', 'sg'); // output: 6655 4433
 ```
 
+### Format Phone Carrier
+```php
+// Using facade
+// string Format::carrier(string $phone, string $country = null)
+Format::carrier('085786920412'); // output: IM3
+Format::carrier('+6281286920412'); // output: Telkomsel
+
+// Using global function
+// string format_carrier(string $phone, string $country = null)
+format_carrier('085786920412'); // output: IM3
+format_carrier('+6281286920412'); // output: Telkomsel
+```
+
 ### Format DateRange
 ```php
 // Using facade
