@@ -16,7 +16,7 @@ Under the hood, it wraps some other great packages.
 
 ## Compatibility
 
-This latest 2.0 version works with Laravel >= 5.5. For previous version, [check 1.6 version](https://github.com/matriphe/format/tree/1.6).
+This latest 2.0 version works with Laravel >= 5.5. For previous version, [check 1.6 version](https://github.com/matriphe/format/tree/1.6.2).
 
 It requires PHP >= 7.0 and and bcmath extension.
 
