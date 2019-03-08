@@ -6,14 +6,14 @@ use Jenssegers\Date\Date;
 
 class FormatSlugHashTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
         Date::setTestNow(Date::parse('2018-07-09 14:02:15'));
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         Date::setTestNow(null);
 

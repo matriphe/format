@@ -14,7 +14,7 @@ abstract class TestCase extends BaseTestCase
 
     protected $format;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

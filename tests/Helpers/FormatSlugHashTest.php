@@ -7,7 +7,7 @@ use Locale;
 
 class FormatSlugHashTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -19,7 +19,7 @@ class FormatSlugHashTest extends TestCase
         require_once(__DIR__.'/../../src/functions.php');
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         Date::setTestNow(null);
 
