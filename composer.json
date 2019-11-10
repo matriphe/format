@@ -14,11 +14,11 @@
     ],
     "require": {
         "php": ">=7.0",
-        "gabrielelana/byte-units": "^0.5.0",
+        "gabrielelana/byte-units": "~0.5.0",
         "hashids/hashids": "^2.0",
-        "propaganistas/laravel-intl": "dev-L5.8",
-        "propaganistas/laravel-phone": "^4.0",
-        "sokil/php-isocodes": "^2.1"
+        "propaganistas/laravel-intl": "~3.0",
+        "propaganistas/laravel-phone": "~4.0",
+        "sokil/php-isocodes": "~2.1"
     },
     "require-dev": {
         "orchestra/testbench": "^3.5",

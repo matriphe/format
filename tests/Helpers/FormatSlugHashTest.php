@@ -2,7 +2,7 @@
 
 namespace Matriphe\Format\Tests\Helpers;
 
-use Jenssegers\Date\Date;
+use Carbon\Carbon;
 use Locale;
 
 class FormatSlugHashTest extends TestCase
@@ -14,14 +14,14 @@ class FormatSlugHashTest extends TestCase
         Locale::setDefault('id_ID');
         date_default_timezone_set($this->tz);
 
-        Date::setTestNow(Date::parse('2018-07-09 14:02:15'));
+        Carbon::setTestNow(Carbon::parse('2018-07-09 14:02:15'));
 
         require_once(__DIR__.'/../../src/functions.php');
     }
 
     public function tearDown() : void
     {
-        Date::setTestNow(null);
+        Carbon::setTestNow(null);
 
         parent::tearDown();
     }

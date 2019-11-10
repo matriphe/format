@@ -2,7 +2,7 @@
 
 namespace Matriphe\Format\Tests;
 
-use Jenssegers\Date\Date;
+use Carbon\Carbon;
 
 class FormatSlugHashTest extends TestCase
 {
@@ -10,12 +10,12 @@ class FormatSlugHashTest extends TestCase
     {
         parent::setUp();
 
-        Date::setTestNow(Date::parse('2018-07-09 14:02:15'));
+        Carbon::setTestNow(Carbon::parse('2018-07-09 14:02:15'));
     }
 
     public function tearDown() : void
     {
-        Date::setTestNow(null);
+        Carbon::setTestNow(null);
 
         parent::tearDown();
     }

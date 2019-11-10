@@ -2,10 +2,15 @@
 
 namespace Matriphe\Format\Tests;
 
+/**
+ * @group dategroup
+ */
 class FormatDateTest extends TestCase
 {
     public function testDateRange()
     {
+        var_dump(['test' => $this->format->getLocale()]);
+        
         $this->assertSame('3 Maret 2015', $this->format->dateRange('2015-03-03'));
         $this->assertSame('3 Maret 2015', $this->format->dateRange(null, '2015-03-03'));
         $this->assertSame('3 Mar 15', $this->format->dateRange('2015-03-03', '', false));

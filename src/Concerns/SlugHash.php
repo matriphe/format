@@ -3,7 +3,6 @@
 namespace Matriphe\Format\Concerns;
 
 use Hashids\Hashids;
-use Jenssegers\Date\Date;
 
 trait SlugHash
 {
@@ -12,7 +11,7 @@ trait SlugHash
     public function slugHash(int $id, $timestamp = null, string $alphabet = null, int $length = 6)
     {
         if (empty($timestamp)) {
-            $timestamp = Date::now();
+            $timestamp = $this->carbon->now();
         }
         $salt = $id.'-'.$this->convertToDate($timestamp)->timestamp;
 

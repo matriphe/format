@@ -4,7 +4,7 @@ namespace Matriphe\Format;
 
 use Carbon\Carbon;
 use DateTimeZone;
-use Jenssegers\Date\Date as IntlDate;
+use Carbon\Translator;
 use Locale;
 use Matriphe\Format\Concerns\Bytes;
 use Matriphe\Format\Concerns\Currency;
@@ -28,9 +28,12 @@ class Format
     protected $currency;
 
     protected $number;
+    protected $carbon;
 
     public function __construct($locale = null, $tz = null)
     {
+        $this->carbon = new Carbon();
+
         if (empty($locale)) {
             $locale = $this->getSystemLocale();
         }
@@ -50,7 +53,7 @@ class Format
         }
 
         $this->locale = strtolower($locale);
-        IntlDate::setLocale($this->locale);
+        $this->carbon->setLocalTranslator(new Translator($this->locale));
 
         $this->setCurrencyLocale();
         $this->setNumberLocale();
@@ -75,7 +78,7 @@ class Format
         return $this->locale;
     }
 
-    public function convertToDate($date)
+    public function convertToDate($date, $locale = null)
     {
         if (empty($date)) {
             return null;
@@ -85,7 +88,17 @@ class Format
             $date = $date->toDateTimeString();
         }
 
-        return IntlDate::parse($date);
+        $locale = $locale ?? $this->locale; var_dump(['convertToDate' => $locale]); 
+        $this->carbon->setLocalTranslator(new Translator($locale));
+        var_dump($this->carbon->parse($date)->formatLocalized('%j %F %Y'));
+
+        // var_dump((new Translator($locale))->getLocale());
+        // var_dump($this->carbon->locale());
+        // $parsed = $this->carbon->parse($date)->formatLocalized('j F Y');
+        // var_dump($this->carbon->translateTimeString($parsed, $this->locale, 'id'));
+        exit;
+        
+        return $this->carbon->locale($locale)->parse($date);
     }
 
     public function countryCodeFromTimezone($timezone = null)

@@ -3,7 +3,6 @@
 namespace Matriphe\Format\Tests;
 
 use Carbon\Carbon;
-use Jenssegers\Date\Date;
 use Locale;
 use Matriphe\Format\Format;
 
@@ -41,12 +40,12 @@ class FormatTest extends TestCase
     {
         $datestring = '2018-07-10 08:28:56';
 
-        $date = Date::parse($datestring);
+        $date = Carbon::parse($datestring);
         $this->assertEquals($date, $this->format->convertToDate($datestring));
         $this->assertEquals($date, $this->format->convertToDate(Carbon::parse($datestring)));
 
         $this->format->setLocale('sg');
-        $date = Date::parse($datestring);
+        $date = Carbon::parse($datestring);
         $this->assertEquals($date, $this->format->convertToDate($datestring));
     }
 
